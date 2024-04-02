@@ -15,8 +15,6 @@ public class MainFrame extends JFrame {
     private static Rogue theRogue;
     private static Enemy theEnemy;
 
-    private static int selectedColor = 0;
-
     public MainFrame() {    //Constructor
 
         //Set Frame Properties
@@ -26,15 +24,9 @@ public class MainFrame extends JFrame {
         setLayout(new CardLayout());
 
         //Create my pre-defined shape objects at start of program
-        theCircle = new Circle(null, 10);
-        theRectangle = new Rectangle(null, 5, 8);
-        theTriangle = new Triangle(null, 12, 19);
-
-        //Create a list of predefined colors at start of program
-        colorsList.add(new ShapeColor("Red", 255, 0, 0));
-        colorsList.add(new ShapeColor("Green", 0, 255, 0));
-        colorsList.add(new ShapeColor("Blue", 0, 0, 255));
-        colorsList.add(new ShapeColor("Purple", 155, 0, 155));
+        theWizard = new Wizard(null, null, null, 0, 0, null, null, 0);
+        theRogue = new Rogue(null, null, null, 0, 0, null, null, 0);
+        theEnemy = new Enemy(null, null, null, 0, 0, null, null);
 
         //Add Panel "screens"
         ChoosePanel chooseScreen = new ChoosePanel();
@@ -55,27 +47,27 @@ public class MainFrame extends JFrame {
         });
     }
 
-    public static Circle getTheCircle() {
-        return theCircle;
+    public static Wizard getTheWizard() {
+        return theWizard;
     }
 
-    public static Rectangle getTheRectangle() {
-        return theRectangle;
+    public static void setTheWizard(Wizard theWizard) {
+        MainFrame.theWizard = theWizard;
     }
 
-    public static Triangle getTheTriangle() {
-        return theTriangle;
+    public static Rogue getTheRogue() {
+        return theRogue;
     }
 
-    public static ArrayList<ShapeColor> getColorsList() {
-        return colorsList;
+    public static void setTheRogue(Rogue theRogue) {
+        MainFrame.theRogue = theRogue;
     }
 
-    public static int getSelectedColor() {
-        return selectedColor;
+    public static Enemy getTheEnemy() {
+        return theEnemy;
     }
 
-    public static void setSelectedColor(int selectedColor) {
-        MainFrame.selectedColor = selectedColor;
+    public static void setTheEnemy(Enemy theEnemy) {
+        MainFrame.theEnemy = theEnemy;
     }
 }
