@@ -1,14 +1,23 @@
 package ca.nscc.Classes;
-import javax.swing.*;
 
-public class Armour extends Object {
+public class Weapon extends Object{
     private int userAttackBuff;
 
-    public int getUserAttackBuff() {
+    public int getuserAttackBuff() {
         return userAttackBuff;
     }
 
-    public void setUserAttackBuff(int userAttackBuff) {
+    public void setuserAttackBuff(int userAttackBuff) {
         this.userAttackBuff = userAttackBuff;
+    }
+
+    public Weapon(String name, int userAttackBuff) {
+        super(name);
+        this.userAttackBuff = userAttackBuff;
+    }
+    
+    @Override
+    public String toString() {
+        return  getName() + ": +" + this.getuserAttackBuff() + " Attack.";
     }
 }
