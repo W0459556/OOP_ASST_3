@@ -14,6 +14,7 @@ public class Rogue extends Player {
 
     public Rogue(Weapon weapon, Armour armour, String species, int attack, int health, ImageIcon image, String attackName, int stealth) {
         super(weapon, armour, species, attack, health, image, attackName);
+        super.setImage(new ImageIcon("src/ca/nscc/Images/rogue.png"));
         this.stealth = stealth;
     }
 }
