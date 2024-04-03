@@ -1,5 +1,4 @@
 package ca.nscc.Classes;
-import javax.swing.*;
 
 public class Enemy extends Entity {
     private String attackName;
