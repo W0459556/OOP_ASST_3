@@ -64,13 +64,15 @@ public abstract class Entity{
         this.image = image;
     }
 
-    public Entity(Weapon weapon, Armour armour, String species, int attack, int health, ImageIcon image) {
+    public Entity(Weapon weapon, Armour armour, String species, int attack, int health) {
         this.weapon = weapon;
         this.armour = armour;
         this.species = species;
         this.attack = attack;
         this.health = health;
-        this.image = image;
+    }
+
+    public Entity() {
     }
 
     @Override

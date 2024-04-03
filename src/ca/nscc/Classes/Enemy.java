@@ -12,8 +12,8 @@ public class Enemy extends Entity {
         this.attackName = attackName;
     }
 
-    public Enemy(Weapon weapon, Armour armour, String species, int attack, int health, ImageIcon image, String attackName) {
-        super(weapon, armour, species, attack, health, image);
+    public Enemy(Weapon weapon, Armour armour, String species, int attack, int health, String attackName) {
+        super(weapon, armour, species, attack, health);
         this.attackName = attackName;
     }
 }

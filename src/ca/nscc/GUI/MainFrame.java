@@ -1,73 +1,66 @@
 package ca.nscc.GUI;
-import ca.nscc.Classes.Rogue;
-import ca.nscc.Classes.Wizard;
-import ca.nscc.Classes.Enemy;
+//import ca.nscc.Classes.Rogue;
+//import ca.nscc.Classes.Wizard;
+//import ca.nscc.Classes.Enemy;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import java.awt.event.*;
+//import java.util.Objects;
+
 
 public class MainFrame extends JFrame {
+    public MainFrame() {
+        initializeMainFrame();
+    }
 
-    private static Wizard theWizard;
-    private static Rogue theRogue;
-    private static Enemy theEnemy;
+    private void initializeMainFrame() {
+        // Set up the main panel with BorderLayout
+        JPanel mainPanel = new JPanel(new BorderLayout());
 
-    public MainFrame() {    //Constructor
+        // Create an empty JPanel to act as a spacer for the center alignment horizontally
+        JPanel horizontalSpacerPanel = new JPanel();
+        mainPanel.add(horizontalSpacerPanel, BorderLayout.CENTER);
 
-        //Set Frame Properties
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(200, 200, 750, 750);
-        setTitle("Shapetastic!");
-        setLayout(new CardLayout());
+        // Create the label for the image
+        JLabel label = new JLabel();
+        label.setIcon(new ImageIcon(getClass().getResource("/ca/nscc/Images/splash.png")));
 
-        //Create my pre-defined shape objects at start of program
-        theWizard = new Wizard(null, null, null, 0, 0, null, null, 0);
-        theRogue = new Rogue(null, null, null, 0, 0, null, null, 0);
-        theEnemy = new Enemy(null, null, null, 0, 0, null, null);
+        // Add the label to the main panel at the top
+        mainPanel.add(label, BorderLayout.NORTH);
 
-        //Add Panel "screens"
-        ChoosePanel chooseScreen = new ChoosePanel();
-        DisplayPanel displayScreen = new DisplayPanel();
-        add(chooseScreen);
-        add(displayScreen);
+        // Create the button
+        JButton button = new JButton("Create Your Character");
+        // Set the preferred height of the button
+        button.setPreferredSize(new Dimension(0, 30));
 
-        JButton displayButton = chooseScreen.getDisplayBtn();
-        displayButton.addActionListener(new ActionListener() {
+        // Add an ActionListener to the button to handle button clicks
+        button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                chooseScreen.createFinalShape();
-                //Display the chosen object text on the Display screen
-                displayScreen.displayUserChoice();
-                chooseScreen.setVisible(false);
-                displayScreen.setVisible(true);
+                // Replace the current MainFrame with ChooseFrame
+                dispose(); // Close the current MainFrame
+                new ChooseFrame(); // Open ChooseFrame
             }
         });
+
+        // Add the button to the main panel at the bottom
+        mainPanel.add(button, BorderLayout.SOUTH);
+
+        // Add the main panel to the frame
+        getContentPane().add(mainPanel);
+
+        // Set the size of the JFrame
+        setSize(720, 750);
+
+        // Center the JFrame on the screen
+        setLocationRelativeTo(null);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
     }
 
-    public static Wizard getTheWizard() {
-        return theWizard;
-    }
-
-    public static void setTheWizard(Wizard theWizard) {
-        MainFrame.theWizard = theWizard;
-    }
-
-    public static Rogue getTheRogue() {
-        return theRogue;
-    }
-
-    public static void setTheRogue(Rogue theRogue) {
-        MainFrame.theRogue = theRogue;
-    }
-
-    public static Enemy getTheEnemy() {
-        return theEnemy;
-    }
-
-    public static void setTheEnemy(Enemy theEnemy) {
-        MainFrame.theEnemy = theEnemy;
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(MainFrame::new);
     }
 }

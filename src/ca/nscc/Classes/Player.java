@@ -12,8 +12,11 @@ public class Player extends Entity {
         this.playerName = playerName;
     }
 
-    public Player(Weapon weapon, Armour armour, String species, int attack, int health, ImageIcon image, String playerName) {
-        super(weapon, armour, species, attack, health, image);
+    public Player(Weapon weapon, Armour armour, String species, int attack, int health, String playerName) {
+        super(weapon, armour, species, attack, health);
         this.playerName = playerName;
+    }
+
+    public Player() {
     }
 }
